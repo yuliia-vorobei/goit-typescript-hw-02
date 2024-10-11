@@ -1,4 +1,3 @@
-// import ImageGallery from "../ImageGallery/ImageGallery";
 import React from "react";
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
@@ -35,7 +34,6 @@ export const ImageModal: React.FC<ImageModalProps> = ({
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      size="sm"
       style={customStyles}
       overlayClassName={css.overlay}
     >

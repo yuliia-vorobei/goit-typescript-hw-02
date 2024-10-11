@@ -9,6 +9,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
 import Modal from "react-modal";
 import { ImageModal } from "../ImageModal/ImageModal";
+import toast from "react-hot-toast";
 
 export interface UrlPicture {
   small: string;
@@ -29,7 +30,7 @@ export default function App() {
   const [page, setPage] = useState<number>(1);
   const [images, setImages] = useState<Picture[]>([]); // відображення галереї
   const [loading, setLoading] = useState<boolean>(false); // waiting loader
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false);
   const [showBtn, setShowBtn] = useState<boolean>(false); // кнопка завантаження
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
@@ -73,7 +74,9 @@ export default function App() {
         setImages((prevResults) => [...prevResults, ...results]);
         setShowBtn(page < total_pages);
       } catch (error) {
-        setError(error);
+        setError(true);
+        console.log(error);
+        toast.error("Something went wrong...");
       } finally {
         setLoading(false);
       }
@@ -85,7 +88,7 @@ export default function App() {
     setImages([]);
     setQuery(value);
     setPage(1);
-    setError(null);
+    setError(false);
     setIsEmpty(false);
   };
 
