@@ -1,5 +1,4 @@
 import { UrlPicture } from "../App/App";
-import { GridItem } from "../GridItem/GridItem";
 import css from "./ImageCard.module.css";
 import React, { MouseEventHandler } from "react";
 
@@ -15,10 +14,8 @@ export const ImageCard: React.FC<ImageCardProps> = ({
   onModal,
 }) => {
   return (
-    <GridItem>
-      <div className={css.card}>
-        <img src={urls.regular} alt={description} onClick={onModal} />
-      </div>
-    </GridItem>
+    <div className={css.card}>
+      <img src={urls.regular} alt={description} onClick={onModal} />
+    </div>
   );
 };

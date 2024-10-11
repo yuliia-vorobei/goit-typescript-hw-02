@@ -1,7 +1,7 @@
 import React from "react";
 import { Picture, UrlPicture } from "../App/App";
-import { Grid } from "../Grid/Grid";
 import { ImageCard } from "../ImageCard/ImageCard";
+import css from "./ImageGallery.module.css";
 
 interface ImagesProps {
   images: Picture[];
@@ -10,7 +10,7 @@ interface ImagesProps {
 
 export const ImageGallery: React.FC<ImagesProps> = ({ images, onModal }) => {
   return (
-    <Grid>
+    <ul className={css.imageList}>
       {images.map((image) => (
         <ImageCard
           key={image.id}
@@ -19,6 +19,6 @@ export const ImageGallery: React.FC<ImagesProps> = ({ images, onModal }) => {
           onModal={() => onModal(image.urls, image.description)}
         />
       ))}
-    </Grid>
+    </ul>
   );
 };
